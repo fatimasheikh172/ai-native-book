@@ -11,12 +11,11 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4 # Update to v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4 # Update to v4
         with:
-          node-version: 18
-          # Agar error de raha ho to cache wali lines ko comment kar dena behtar hai
+          node-version: 20 # Yahan 18 ki jagah 20 kar diya hai
           cache: 'npm'
           cache-dependency-path: 'frontend/package.json'
 
@@ -32,7 +31,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Vite use kar rahe hain to 'frontend/dist' likhein, warna 'frontend/build'
+          # Docusaurus default mein 'build' folder banata hai
           publish_dir: ./frontend/build
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
