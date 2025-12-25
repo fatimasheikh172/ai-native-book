@@ -10,10 +10,8 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    # --- YE DO LINES ADD KI HAIN ---
     permissions:
       contents: write
-    # -----------------------------
     steps:
       - uses: actions/checkout@v4
 
@@ -21,20 +19,22 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: 'frontend/package.json'
+          # Yahan se 'frontend/' hata diya gaya hai
+          cache-dependency-path: 'package.json'
 
       - name: Install dependencies
         run: npm install
-        working-directory: frontend
+        # working-directory yahan se hata di gayi hai
 
       - name: Build website
         run: npm run build
-        working-directory: frontend
+        # working-directory yahan se hata di gayi hai
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/build
+          # Docusaurus ab seedha root ke 'build' folder mein jayega
+          publish_dir: ./build 
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
