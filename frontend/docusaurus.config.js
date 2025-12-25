@@ -13,14 +13,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://github.com/fatimasheikh172/ai-native-book',
+  url: 'https://fatimasheikh172.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub Pages deployment, it is often '/<projectName>/'
   baseUrl: '/ai-native-book',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-username', // Usually your GitHub org/user name.
+  organizationName: 'fatimasheikh172', // Usually your GitHub org/user name.
   projectName: 'ai-native-book', // Usually your repo name.
 
   onBrokenLinks: 'throw',
