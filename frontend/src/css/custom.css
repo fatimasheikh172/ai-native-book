@@ -1,0 +1,145 @@
+/* You can override the default Docusaurus styles here. */
+/* Theme toggle positioning */
+.navbar-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Professional button styling */
+.button {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%) !important;
+  border: none !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #44a08d 0%, #3d8b7d 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+  color: white !important;
+}
+
+.button--secondary {
+  background: transparent !important;
+  border: 2px solid #4ecdc4 !important;
+  color: #4ecdc4 !important;
+}
+
+.button--secondary:hover {
+  background: rgba(78, 205, 196, 0.1) !important;
+  color: #4ecdc4 !important;
+}
+
+#theme-toggle-container {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.theme-toggle-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+[data-theme='dark'] .theme-toggle-button {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='dark'] .theme-toggle-button:hover {
+  background: rgba(30, 30, 30, 0.7);
+}
+
+/* Global dark mode styles */
+[data-theme='dark'] body {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+[data-theme='dark'] .navbar {
+  background-color: #1e1e1e;
+}
+
+[data-theme='dark'] .footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f1728 100%);
+}
+
+/* Dark footer styling */
+[data-theme='dark'] .footer {
+  background-color: #0f0f0f;
+}
+
+.footer {
+  background-color: #1a1a1a; /* Dark background */
+  color: #e2e8f0;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer__title {
+  color: #f8fafc;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme='dark'] .footer__title {
+  color: #f8fafc;
+}
+
+.footer__item {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+[data-theme='dark'] .footer__item {
+  color: #cbd5e1;
+}
+
+.footer__item:hover {
+  color: #4ecdc4; /* Professional teal hover */
+  text-decoration: none;
+}
+
+[data-theme='dark'] .footer__item:hover {
+  color: #4ecdc4;
+}
+
+.footer__links {
+  margin: 1rem 0;
+}
+
+.footer__copyright {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #334155;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+[data-theme='dark'] .footer__copyright {
+  border-top: 1px solid #334155;
+  color: #94a3b8;
+}

@@ -1,0 +1,78 @@
+# API Contract: Docucures RAG Chatbot
+
+## Authentication API
+
+### POST /api/auth/register
+Register a new user account
+- Request: `{"email": "string", "password": "string", "first_name": "string", "last_name": "string"}`
+- Response: `{"success": true, "user_id": "uuid", "access_token": "string", "refresh_token": "string"}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### POST /api/auth/login
+Authenticate user and return tokens
+- Request: `{"email": "string", "password": "string"}`
+- Response: `{"success": true, "user_id": "uuid", "access_token": "string", "refresh_token": "string"}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### POST /api/auth/refresh
+Refresh access token using refresh token
+- Request: `{"refresh_token": "string"}`
+- Response: `{"success": true, "access_token": "string"}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### POST /api/auth/logout
+Logout user and revoke tokens
+- Headers: `Authorization: Bearer {access_token}`
+- Response: `{"success": true}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+## RAG Query API
+
+### POST /api/rag/query
+Submit a query to the RAG system
+- Headers: `Authorization: Bearer {access_token}`
+- Request: `{"query": "string", "session_id": "uuid?", "context_filter": {"source": ["string"], "page_range": {"start": "int", "end": "int"}}?}`
+- Response: `{"success": true, "response": "string", "session_id": "uuid", "sources": [{"id": "uuid", "page": "int", "chapter": "string", "text": "string"}]}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### POST /api/rag/query-selection
+Submit a query based on user-provided text selection
+- Headers: `Authorization: Bearer {access_token}`
+- Request: `{"query": "string", "selection_text": "string", "session_id": "uuid?"}`
+- Response: `{"success": true, "response": "string", "session_id": "uuid"}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+## Chat Session API
+
+### GET /api/chat/sessions
+Get user's chat sessions
+- Headers: `Authorization: Bearer {access_token}`
+- Response: `{"success": true, "sessions": [{"id": "uuid", "title": "string", "created_at": "datetime", "updated_at": "datetime"}]}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### GET /api/chat/sessions/{session_id}
+Get a specific chat session
+- Headers: `Authorization: Bearer {access_token}`
+- Response: `{"success": true, "session": {"id": "uuid", "title": "string", "created_at": "datetime", "updated_at": "datetime"}, "messages": [{"id": "uuid", "role": "string", "content": "string", "timestamp": "datetime"}]}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### DELETE /api/chat/sessions/{session_id}
+Delete a chat session
+- Headers: `Authorization: Bearer {access_token}`
+- Response: `{"success": true}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+## User Profile API
+
+### GET /api/user/profile
+Get user profile information
+- Headers: `Authorization: Bearer {access_token}`
+- Response: `{"success": true, "user": {"id": "uuid", "email": "string", "first_name": "string", "last_name": "string", "created_at": "datetime"}}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`
+
+### PUT /api/user/profile
+Update user profile information
+- Headers: `Authorization: Bearer {access_token}`
+- Request: `{"first_name": "string", "last_name": "string"}`
+- Response: `{"success": true, "user": {"id": "uuid", "email": "string", "first_name": "string", "last_name": "string", "updated_at": "datetime"}}`
+- Error Response: `{"success": false, "error": "string", "code": "string"}`

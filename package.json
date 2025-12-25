@@ -1,0 +1,21 @@
+{
+  "name": "ai-native-book",
+  "version": "1.0.0",
+  "description": "AI Native Book application with frontend and backend",
+  "scripts": {
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "dev": "npm run dev:frontend",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start": "cd frontend && npm run start",
+    "test": "npm run test:frontend",
+    "test:frontend": "cd frontend && npm run test"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {}
+}

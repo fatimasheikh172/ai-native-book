@@ -1,0 +1,280 @@
+/* ===============================
+   GLOBAL & THEME SETUP
+================================ */
+
+:root {
+  --neon-cyan: #00e5ff;
+  --neon-purple: #a855f7;
+  --dark-bg: #030712;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ===============================
+   HERO SECTION (Cyberpunk Theme)
+================================ */
+
+.heroBanner {
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+  /* Deep space background with a hint of purple/blue glow */
+  background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
+              var(--dark-bg);
+  color: #ffffff;
+}
+
+/* Floating Animation for Robot Image */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* ===============================
+   HERO CONTENT LAYOUT
+================================ */
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.bookInfo {
+  flex: 1.2;
+  max-width: 700px;
+  z-index: 5;
+}
+
+/* ===============================
+   TYPOGRAPHY (Title & Subtitle)
+================================ */
+
+.mainTitle {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #fff 20%, var(--neon-cyan) 50%, var(--neon-purple) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #94a3b8 !important;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.subSubtitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--neon-purple);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+}
+
+.focusLine {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 229, 255, 0.1);
+  border-left: 3px solid var(--neon-cyan);
+  color: var(--neon-cyan) !important;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 1.5rem 0;
+}
+
+/* ===============================
+   TECH BADGES
+================================ */
+
+.technologiesLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 996px) {
+  .technologiesLine { justify-content: center; }
+}
+
+.techItem {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #f8fafc !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.techItem:hover {
+  border-color: var(--neon-cyan);
+  background: rgba(0, 229, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   ROBOT IMAGE STYLING
+================================ */
+
+.robotImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.robotImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.robotImageElement {
+  width: 100%;
+  height: auto;
+  /* Circular Glow effect to match image */
+  border-radius: 30px;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.2));
+}
+
+/* ===============================
+   NEON BUTTONS
+================================ */
+
+.buttons .button--secondary {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+  border: none;
+  color: #000 !important;
+  font-weight: 800;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.buttons .button--secondary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+  filter: brightness(1.2);
+}
+
+/* ===============================
+   MODULE CARDS (Glassmorphism)
+================================ */
+.modulesSection {
+  padding: 6rem 0;
+  background: #030712; /* Match with Hero background */
+  position: relative;
+}
+
+/* Heading centered with neon underline */
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* Card Container Fix for Equal Height */
+.moduleCard {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 20px !important;
+  padding: 2rem;
+  height: 100%; /* Important: Takes full height of the column */
+  display: flex;
+  flex-direction: column; /* Content stack vertically */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.moduleCard:hover {
+  transform: translateY(-15px);
+  border-color: var(--neon-cyan) !important;
+  background: rgba(0, 229, 255, 0.05) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.1);
+}
+
+.cardHeader h3 {
+  color: #ffffff !important;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  min-height: 3.5rem; /* Titles ko align rakhne ke liye */
+}
+
+.cardBody {
+  flex: 1; /* Ye body ko stretch karega taaki footer hamesha bottom par rahe */
+  color: #94a3b8 !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.cardFooter {
+  margin-top: auto; /* Footer ko bottom par push karega */
+}
+
+/* Start Learning Button inside Card */
+.cardFooter .button {
+  background: transparent !important;
+  border: 1px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cardFooter .button:hover {
+  background: var(--neon-cyan) !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }

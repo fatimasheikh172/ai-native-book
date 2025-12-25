@@ -1,0 +1,620 @@
+openapi: 3.0.3
+info:
+  title: Physical AI and Human-Aided Robotics Book API
+  description: API for the educational platform covering Physical AI and Human-Aided Robotics curriculum
+  version: 1.0.0
+  contact:
+    name: Development Team
+    email: dev@physical-ai-book.example.com
+
+servers:
+  - url: https://api.physical-ai-book.example.com/v1
+    description: Production server
+  - url: http://localhost:3001/v1
+    description: Development server
+
+paths:
+  /auth/login:
+    post:
+      summary: User login
+      description: Authenticate user and return session token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: student@example.com
+                password:
+                  type: string
+                  format: password
+                  example: securePassword123
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid credentials
+        '400':
+          description: Invalid request format
+
+  /auth/register:
+    post:
+      summary: User registration
+      description: Register a new user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - role
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: newuser@example.com
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                  example: securePassword123
+                role:
+                  type: string
+                  enum: [student, educator, researcher]
+                  example: student
+                name:
+                  type: string
+                  example: John Doe
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User registered successfully
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request or user already exists
+
+  /auth/me:
+    get:
+      summary: Get current user
+      description: Retrieve information about the authenticated user
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Current user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+
+  /progress/{userId}:
+    get:
+      summary: Get user progress
+      description: Retrieve progress information for a specific user
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User progress information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  progress:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserProgress'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User not found
+
+  /progress/{userId}/module/{moduleId}:
+    get:
+      summary: Get progress for specific module
+      description: Retrieve progress information for a specific module
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Module progress information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProgress'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User or module not found
+    put:
+      summary: Update progress for specific module
+      description: Update progress information for a specific module
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                progress_percentage:
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+                status:
+                  type: string
+                  enum: [not_started, in_progress, completed]
+                time_spent:
+                  type: integer
+                  description: Time spent in seconds
+      responses:
+        '200':
+          description: Progress updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProgress'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User or module not found
+
+  /assessments/module/{moduleId}:
+    get:
+      summary: Get assessments for module
+      description: Retrieve all assessments for a specific module
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of assessments for the module
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assessment'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Module not found
+
+  /assessments/{assessmentId}/attempt:
+    post:
+      summary: Start assessment attempt
+      description: Start a new attempt at an assessment
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: assessmentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '201':
+          description: Assessment attempt started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssessmentAttempt'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Assessment not found
+
+  /assessments/{assessmentId}/attempt/{attemptId}:
+    put:
+      summary: Submit assessment attempt
+      description: Submit answers for an assessment attempt
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: assessmentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      questionId:
+                        type: string
+                        format: uuid
+                      answer:
+                        type: string
+      responses:
+        '200':
+          description: Assessment submitted and graded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssessmentAttempt'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Assessment or attempt not found
+
+  /offline/content/{moduleId}:
+    get:
+      summary: Get offline content for module
+      description: Retrieve available offline content for a specific module
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: moduleId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of available offline content
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OfflineContent'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Module not found
+
+  /offline/download/{contentId}:
+    post:
+      summary: Request offline content download
+      description: Request a download token for offline content
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Download token and URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  downloadUrl:
+                    type: string
+                  expiresAt:
+                    type: string
+                    format: date-time
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum: [student, educator, researcher]
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastLogin:
+          type: string
+          format: date-time
+      required:
+        - id
+        - email
+        - role
+        - createdAt
+
+    Module:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        moduleNumber:
+          type: integer
+        prerequisites:
+          type: array
+          items:
+            type: string
+            format: uuid
+        estimatedDuration:
+          type: integer
+        contentUrl:
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - moduleNumber
+        - estimatedDuration
+        - contentUrl
+
+    UserProgress:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        moduleId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [not_started, in_progress, completed]
+        progressPercentage:
+          type: integer
+          minimum: 0
+          maximum: 100
+        timeSpent:
+          type: integer
+        lastAccessed:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - userId
+        - moduleId
+        - status
+        - progressPercentage
+        - timeSpent
+        - lastAccessed
+
+    Assessment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        moduleId:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        assessmentType:
+          type: string
+          enum: [quiz, assignment, exam]
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        maxScore:
+          type: integer
+        timeLimit:
+          type: integer
+      required:
+        - id
+        - moduleId
+        - title
+        - description
+        - assessmentType
+        - questions
+        - maxScore
+
+    Question:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        questionText:
+          type: string
+        questionType:
+          type: string
+          enum: [multiple_choice, short_answer, essay]
+        options:
+          type: array
+          items:
+            type: string
+        correctAnswer:
+          type: array
+          items:
+            type: string
+        points:
+          type: integer
+        order:
+          type: integer
+      required:
+        - id
+        - questionText
+        - questionType
+        - points
+        - order
+
+    AssessmentAttempt:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        assessmentId:
+          type: string
+          format: uuid
+        answers:
+          type: array
+          items:
+            type: object
+            properties:
+              questionId:
+                type: string
+                format: uuid
+              answer:
+                type: string
+        score:
+          type: integer
+        maxScore:
+          type: integer
+        status:
+          type: string
+          enum: [in_progress, submitted, graded]
+        startedAt:
+          type: string
+          format: date-time
+        submittedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - userId
+        - assessmentId
+        - answers
+        - maxScore
+        - status
+        - startedAt
+
+    OfflineContent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        moduleId:
+          type: string
+          format: uuid
+        contentType:
+          type: string
+          enum: [text, image, video, pdf]
+        contentUrl:
+          type: string
+        fileSize:
+          type: integer
+        downloadCount:
+          type: integer
+      required:
+        - id
+        - moduleId
+        - contentType
+        - contentUrl
+        - fileSize
+        - downloadCount
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
