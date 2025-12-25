@@ -14,28 +14,34 @@ const config = {
 
   // Set the production url of your site here
   url: 'https://fatimasheikh172.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub Pages deployment, it is often '/<projectName>/'
-  baseUrl: '/ai-native-book',
+  
+  // --- CHANGED THIS SECTION ---
+  // Changed from '/ai-native-book' to '/' for local development
+  baseUrl: '/', 
+  // ----------------------------
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'fatimasheikh172', // Usually your GitHub org/user name.
-  projectName: 'ai-native-book', // Usually your repo name.
+  organizationName: 'fatimasheikh172', 
+  projectName: 'ai-native-book', 
 
   onBrokenLinks: 'throw',
+  
+  // Moved scripts here (Root level) so they actually work
+  scripts: [
+    {
+      src: '/js/theme-toggle.js',
+      async: true,
+    },
+  ],
+
   markdown: {
     mermaid: true,
     parseFrontMatter: undefined,
-    // Migrate the deprecated option to the new location
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
   },
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -48,15 +54,11 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -70,7 +72,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Physical AI Book',
@@ -105,7 +106,8 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                to: '/docs/docs/intro',
+                // Make sure this path exists in your folders
+                to: '/docs/intro', 
               },
             ],
           },
@@ -116,12 +118,6 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
-      scripts: [
-        {
-          src: '/js/theme-toggle.js',
-          async: true,
-        },
-      ],
     }),
 };
 
