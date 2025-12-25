@@ -5,46 +5,15 @@
       "src": "backend/src/main.py",
       "use": "@vercel/python",
       "config": {
-        "includeFiles": [
-          "backend/src/**",
-          "backend/requirements.txt"
-        ],
-        "excludeFiles": [
-          "backend/node_modules/**",
-          "backend/dist/**",
-          "backend/.pytest_cache/**",
-          "backend/.venv/**",
-          "backend/venv/**",
-          "backend/venv_bak/**",
-          "**/__pycache__/**",
-          "**/*.pyc",
-          "**/*.pyo",
-          "**/.*",
-          "**/tests/**",
-          "**/test_*.py",
-          "**/*_test.py",
-          "**/.git/**",
-          "**/.github/**",
-          "**/.vscode/**",
-          "**/docs/**",
-          "**/*.md",
-          "**/*.log",
-          "node_modules/**",
-          ".next/**",
-          ".vercel/**",
-          "package-lock.json",
-          "yarn.lock",
-          "**/.env.local",
-          "**/.env.production",
-          "**/.env.development"
-        ]
+        "includeFiles": ["backend/src/**", "backend/requirements.txt"],
+        "excludeFiles": ["**/node_modules/**", "**/__pycache__/**", "**/venv/**"]
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "backend/src/main.py"
+      "source": "/api/(.*)",
+      "destination": "backend/src/main.py"
     }
   ],
   "headers": [
@@ -65,5 +34,6 @@
         }
       ]
     }
-  ]
+  ],
+  "cleanUrls": true
 }
