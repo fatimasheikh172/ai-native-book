@@ -107,7 +107,7 @@ const config = {
               {
                 label: 'Introduction',
                 // Make sure this path exists in your folders
-                to: '/docs/intro', 
+                to: '/docs/module-1-nervous-system/intro', 
               },
             ],
           },
