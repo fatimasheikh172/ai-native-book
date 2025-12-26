@@ -87,6 +87,11 @@ const config = {
             label: 'Modules',
           },
           {
+            to: '/3d-explorer',
+            label: '3D Explorer',
+            position: 'left',
+          },
+          {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
             position: 'right',
@@ -102,12 +107,53 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Get Started',
+            title: 'Academics',
             items: [
               {
                 label: 'Introduction',
-                // Make sure this path exists in your folders
-                to: '/docs/module-1-nervous-system/intro', 
+                to: '/docs/module-1-nervous-system/intro',
+              },
+              {
+                label: 'Course Modules',
+                to: '/docs/category/modules',
+              },
+              {
+                label: 'Research Papers',
+                to: '/docs/category/research',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'Documentation',
+                to: '/docs/intro',
+              },
+              {
+                label: 'Tutorials',
+                to: '/docs/category/tutorials',
+              },
+              {
+                label: 'Examples',
+                to: '/docs/category/examples',
+              },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/fatimasheikh172/ai-native-book',
+              },
+              {
+                label: 'Discussions',
+                href: 'https://github.com/facebook/docusaurus/discussions',
+              },
+              {
+                label: 'Contributing',
+                to: '/docs/contributing',
               },
             ],
           },

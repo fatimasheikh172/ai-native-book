@@ -16,6 +16,7 @@ const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   tutorialSidebar: [
     'intro',
+    'important-key-concepts',
     {
       type: 'category',
       label: 'Module 1: Robotic Nervous System',
@@ -41,6 +42,13 @@ const sidebars = {
         'module-2-digital-twin/digital-twin-architecture-diagrams',
         'module-2-digital-twin/module-2-assessment',
         'module-2-digital-twin/module-1-2-connections'
+      ],
+    },
+    {
+      type: 'category',
+      label: '3D Visualization',
+      items: [
+        '3d-visualization',
       ],
     },
     {

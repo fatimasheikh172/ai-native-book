@@ -53,3 +53,18 @@ Digital twins are crucial for safety-first robotics development. By testing in s
 ## Next Steps
 
 In the following sections, we'll dive deep into simulation physics, explore Unity integration for advanced visualization, and examine how LLMs can enhance digital twin capabilities for cognitive planning and decision-making.
+
+### Course Navigation
+
+- [Back to Course Modules](../../category/modules)
+- [Previous: Module 1 - The Robotic Nervous System](../module-1-nervous-system/intro)
+- [Next: Module 3 - The AI Robot Brain](../module-3-ai-brain/intro)
+
+### Additional Resources
+
+- [Tutorials](../../category/tutorials): Step-by-step guides to implement concepts covered in this module
+- [Examples](../../category/examples): Practical code examples and implementations
+- [Research Papers](../../category/research): Academic resources related to this module
+- [Contribute](../../contributing): Information on how to contribute to this educational resource
+
+For additional learning materials and community support, please visit our resources section which includes tutorials, research papers, and community forums. You can also access the source code and contribute to this educational project through our GitHub repository.

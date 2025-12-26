@@ -32,7 +32,7 @@ Physical AI serves as the bridge between digital intelligence and physical reali
 
 Physical AI has transformative applications across multiple domains:
 
-- **Humanoid Robotics**: Creating robots with human-like capabilities for assistance, companionship, and collaboration
+- **HUMANOID Robotics**: Creating robots with human-like capabilities for assistance, companionship, and collaboration
 - **Autonomous Systems**: Self-driving vehicles, drones, and other autonomous agents that navigate physical spaces
 - **Industrial Automation**: Smart manufacturing systems that adapt to changing conditions and optimize production
 - **Healthcare Robotics**: Assistive devices and robotic systems for medical procedures and patient care
@@ -57,4 +57,18 @@ By the end of this module, you will understand:
 4. How to model robots using URDF and simulate them in virtual environments
 5. The safety considerations and best practices for developing physical AI systems
 
-This foundation will prepare you for more advanced topics in subsequent modules, including digital twins, AI robot brains, and vision-language-action systems that enable truly autonomous humanoid robots.
+This foundation will prepare you for more advanced topics in subsequent modules, including digital twins, AI robot brains, and vision-language-action systems that enable truly autonomous HUMANOID robots.
+
+### Course Navigation
+
+- [Back to Course Modules](../../category/modules)
+- [Next: Module 2 - The Digital Twin](../module-2-digital-twin/intro)
+
+### Additional Resources
+
+- [Tutorials](../../category/tutorials): Step-by-step guides to implement concepts covered in this module
+- [Examples](../../category/examples): Practical code examples and implementations
+- [Research Papers](../../category/research): Academic resources related to this module
+- [Contribute](../../contributing): Information on how to contribute to this educational resource
+
+For additional learning materials and community support, please visit our resources section which includes tutorials, research papers, and community forums. You can also access the source code and contribute to this educational project through our GitHub repository.

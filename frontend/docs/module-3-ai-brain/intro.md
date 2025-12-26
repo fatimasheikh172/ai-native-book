@@ -118,3 +118,18 @@ This module sets the foundation for the advanced AI capabilities explored in Mod
 ## Module Structure
 
 The following sections will explore each component of the AI Robot Brain in detail, providing both theoretical understanding and practical implementation guidance for creating intelligent robotic systems that embody the principles of Physical AI.
+
+### Course Navigation
+
+- [Back to Course Modules](../../category/modules)
+- [Previous: Module 2 - The Digital Twin](../module-2-digital-twin/intro)
+- [Next: Module 4 - Vision-Language-Action (VLA)](../module-4-vla/index)
+
+### Additional Resources
+
+- [Tutorials](../../category/tutorials): Step-by-step guides to implement concepts covered in this module
+- [Examples](../../category/examples): Practical code examples and implementations
+- [Research Papers](../../category/research): Academic resources related to this module
+- [Contribute](../../contributing): Information on how to contribute to this educational resource
+
+For additional learning materials and community support, please visit our resources section which includes tutorials, research papers, and community forums. You can also access the source code and contribute to this educational project through our GitHub repository.

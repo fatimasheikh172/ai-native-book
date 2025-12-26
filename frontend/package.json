@@ -21,11 +21,16 @@
     "@docusaurus/core": "^3.9.2",
     "@docusaurus/preset-classic": "^3.9.2",
     "@mdx-js/react": "^3.0.0",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@react-three/postprocessing": "^2.19.1",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "three": "^0.160.1",
+    "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.1.0",
