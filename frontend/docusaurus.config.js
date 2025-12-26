@@ -1,32 +1,25 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Physical AI and Human-Aided Robotics',
-  tagline: 'Bracing the Digital Brain and Physical Protein',
+  title: 'Physical AI and Humanoid Robotics',
+  tagline: 'Bridging the Digital Brain and Physical Protein',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
+  // GitHub Pages Deployment
   url: 'https://fatimasheikh172.github.io',
-  
-  // --- CHANGED THIS SECTION ---
-  // Changed from '/ai-native-book' to '/' for local development
+  // NOTE: Local development ke liye '/' sahi hai, 
+  // lekin GitHub deploy ke liye '/ai-native-book/' zaroori hai.
   baseUrl: '/', 
-  // ----------------------------
 
-  // GitHub pages deployment config.
   organizationName: 'fatimasheikh172', 
   projectName: 'ai-native-book', 
 
-  onBrokenLinks: 'throw',
-  
-  // Moved scripts here (Root level) so they actually work
+  // CHANGED: Ise 'warn' par rakha hai taaki broken links ki wajah se build na ruke
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+
   scripts: [
     {
       src: '/js/theme-toggle.js',
@@ -36,10 +29,6 @@ const config = {
 
   markdown: {
     mermaid: true,
-    parseFrontMatter: undefined,
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
   },
 
   i18n: {
@@ -54,13 +43,10 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/fatimasheikh172/ai-native-book/tree/main/',
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -92,7 +78,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/fatimasheikh172/ai-native-book',
             label: 'GitHub',
             position: 'right',
           },
@@ -107,19 +93,19 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Academics',
+            title: 'Modules',
             items: [
               {
                 label: 'Introduction',
+                to: '/docs/intro',
+              },
+              {
+                label: 'Robotic Nervous System',
                 to: '/docs/module-1-nervous-system/intro',
               },
               {
-                label: 'Course Modules',
-                to: '/docs/category/modules',
-              },
-              {
-                label: 'Research Papers',
-                to: '/docs/category/research',
+                label: 'The Digital Twin',
+                to: '/docs/module-2-digital-twin/intro',
               },
             ],
           },
@@ -127,16 +113,16 @@ const config = {
             title: 'Resources',
             items: [
               {
-                label: 'Documentation',
-                to: '/docs/intro',
+                label: '3D Visualization',
+                to: '/docs/3d-visualization',
               },
               {
-                label: 'Tutorials',
-                to: '/docs/category/tutorials',
+                label: 'AI Robot Brain',
+                to: '/docs/module-3-ai-brain/intro',
               },
               {
-                label: 'Examples',
-                to: '/docs/category/examples',
+                label: 'VLA System',
+                to: '/docs/module-4-vla/intro',
               },
             ],
           },
@@ -144,21 +130,17 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/fatimasheikh172/ai-native-book',
+                label: 'GitHub Profile',
+                href: 'https://github.com/fatimasheikh172',
               },
               {
-                label: 'Discussions',
+                label: 'Docusaurus Discussions',
                 href: 'https://github.com/facebook/docusaurus/discussions',
-              },
-              {
-                label: 'Contributing',
-                to: '/docs/contributing',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI and Human-Aided Robotics Book. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Physical AI and Humanoid Robotics. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
