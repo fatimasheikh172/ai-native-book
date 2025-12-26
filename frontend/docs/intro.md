@@ -2,9 +2,9 @@
 slug: /docs/intro
 ---
 
-# Introduction to Physical AI and Human-Aided Robotics
+# Introduction to Physical AI and Humanoided Robotics
 
-Welcome to the comprehensive curriculum on **Physical AI and Human-Aided Robotics: Bracing the Digital Brain and Physical Protein**. This educational platform provides a structured learning path through four interconnected modules that progressively build your understanding from foundational robotic concepts to advanced AI integration.
+Welcome to the comprehensive curriculum on **Physical AI and Humanoided Robotics: Bracing the Digital Brain and Physical Protein**. This educational platform provides a structured learning path through four interconnected modules that progressively build your understanding from foundational robotic concepts to advanced AI integration.
 
 ## Course Overview
 

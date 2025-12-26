@@ -122,7 +122,7 @@ const config = {
               },
               {
                 label: 'VLA System',
-                to: '/docs/module-4-vla/intro',
+                to: '/docs/module-4-vla',
               },
             ],
           },
