@@ -18,7 +18,6 @@ const config = {
 
   // CHANGED: Ise 'warn' par rakha hai taaki broken links ki wajah se build na ruke
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
 
   scripts: [
     {
@@ -73,8 +72,13 @@ const config = {
             label: 'Modules',
           },
           {
+            to: '/about',
+            label: 'About',
+            position: 'left',
+          },
+          {
             to: '/3d-explorer',
-            label: '3D Explorer',
+            label: '3D Visualization',
             position: 'left',
           },
           {
@@ -88,6 +92,7 @@ const config = {
             value: '<div id="theme-toggle-container"></div>',
           },
         ],
+        hideOnScroll: false,
       },
       footer: {
         style: 'dark',

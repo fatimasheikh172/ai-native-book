@@ -28,6 +28,113 @@
   padding: 0.8rem 1rem !important;
 }
 
+/* Mobile responsive navbar */
+@media (max-width: 996px) {
+  .navbar {
+    padding: 0.8rem 0.8rem !important;
+  }
+
+  .navbar__items {
+    gap: 0.8rem;
+  }
+
+  .navbar-sidebar__brand {
+    padding: 1rem 1rem 0.5rem 1rem !important;
+    background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
+                var(--dark-bg) !important;
+  }
+
+  .navbar-sidebar__items {
+    padding: 0.5rem 1rem 1rem 1rem !important;
+  }
+
+  /* Adjust navbar items for mobile */
+  .navbar__item,
+  .navbar__link {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Ensure the theme toggle container has proper spacing */
+  #theme-toggle-container {
+    margin-left: 0.3rem;
+  }
+
+  /* Make sure the mobile menu has enough space */
+  .navbar-sidebar {
+    background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
+                var(--dark-bg) !important;
+  }
+
+  /* Ensure mobile menu items are clearly visible */
+  .menu__list .menu__list-item {
+    margin: 0.3rem 0 !important;
+  }
+
+  .menu__link {
+    color: var(--text-primary) !important;
+    margin: 0.2rem 0.3rem !important;
+    padding: 0.6rem 1rem !important;
+  }
+
+  /* Make sure the toggle button is visible */
+  .navbar__toggle {
+    color: var(--neon-cyan) !important;
+    background: rgba(0, 229, 255, 0.1) !important;
+    border: 1px solid rgba(0, 229, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1001 !important;
+  }
+
+  .navbar__toggle:hover {
+    background: rgba(0, 229, 255, 0.2) !important;
+    color: var(--neon-purple) !important;
+  }
+
+  /* Ensure all navigation items appear in mobile menu */
+  .navbar-sidebar .menu__list {
+    width: 100% !important;
+  }
+
+  .navbar-sidebar .menu__list .menu__list-item {
+    width: 100% !important;
+  }
+
+  /* Style for mobile menu items to ensure visibility */
+  .navbar-sidebar .menu__link {
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    margin: 0.2rem 0 !important;
+    padding: 0.8rem 1rem !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  .navbar-sidebar .menu__link:hover {
+    background: rgba(0, 229, 255, 0.1) !important;
+    color: var(--neon-cyan) !important;
+    transform: translateX(5px) !important;
+  }
+
+  /* Ensure mobile sidebar items are properly styled */
+  .navbar-sidebar .menu__list .menu__list-item .menu__link {
+    color: var(--text-primary) !important;
+  }
+
+  .navbar-sidebar .menu__list .menu__list-item .menu__link:hover {
+    color: var(--neon-cyan) !important;
+  }
+}
+
 .navbar__inner {
   display: flex;
   align-items: center;
@@ -656,6 +763,7 @@
   }
 }
 
+
 .bookInfo {
   flex: 1.2;
   max-width: 700px;
@@ -722,6 +830,7 @@
 @media screen and (max-width: 996px) {
   .technologiesLine { justify-content: center; }
 }
+
 
 .techItem {
   background: var(--glass-bg);
@@ -900,6 +1009,7 @@
 .keyConceptsContainer {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .keyConceptsGrid {
@@ -991,6 +1101,95 @@
   font-weight: 400;
 }
 
+/* Responsive adjustments for key concepts */
+@media (max-width: 996px) {
+  .keyConceptsGrid {
+    grid-template-columns: 1fr; /* Single column on tablets and mobile - stack vertically */
+    gap: 1.5rem;
+  }
+
+  .keyConceptsContainer {
+    padding: 0 1rem;
+  }
+
+  .keyConceptsSection {
+    padding: 3rem 0; /* Reduced padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .keyConceptsGrid {
+    grid-template-columns: 1fr; /* Ensure vertical stacking on small screens */
+    gap: 1rem; /* Reduced gap for mobile */
+    padding: 0 0.5rem; /* Reduced padding */
+  }
+
+  .conceptCard {
+    padding: 1rem; /* Significantly reduced padding for mobile */
+    min-height: auto; /* Allow cards to shrink to content height */
+  }
+
+  .conceptTitle {
+    font-size: 1rem; /* Smaller title for mobile */
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .conceptList {
+    flex: none; /* Remove flex: 1 to allow cards to shrink */
+  }
+
+  .conceptList li {
+    font-size: 0.75rem; /* Smaller text for mobile */
+    margin-bottom: 0.4rem;
+    line-height: 1.4; /* Tighter line height to save space */
+  }
+
+  .keyConceptsSection {
+    padding: 2rem 0; /* Reduced section padding */
+  }
+
+  .conceptDescription {
+    font-size: 0.9rem; /* Smaller text */
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyConceptsGrid {
+    gap: 0.75rem; /* Even smaller gap */
+    padding: 0 0.25rem; /* Minimal padding */
+  }
+
+  .conceptCard {
+    padding: 0.75rem; /* Further reduced padding for smallest screens */
+  }
+
+  .conceptTitle {
+    font-size: 0.9rem; /* Even smaller title */
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .conceptList {
+    padding-left: 0.5rem;
+  }
+
+  .conceptList li {
+    font-size: 0.7rem; /* Even smaller text */
+    margin-bottom: 0.3rem;
+  }
+
+  .conceptIcon {
+    font-size: 1.8rem; /* Smaller icons */
+    margin-bottom: 0.6rem;
+  }
+
+  .keyConceptsSection {
+    padding: 1.5rem 0; /* Further reduced section padding */
+  }
+}
+
 .keyConceptsFooter .button--primary {
   background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)) !important;
   border: none;
@@ -1036,6 +1235,7 @@
     gap: 2rem;
   }
 }
+
 
 .curriculumTimeline {
   display: flex;

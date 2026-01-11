@@ -50,6 +50,7 @@
   }
 }
 
+
 .bookInfo {
   flex: 1.2;
   max-width: 700px;
@@ -116,6 +117,7 @@
 @media screen and (max-width: 996px) {
   .technologiesLine { justify-content: center; }
 }
+
 
 .techItem {
   background: var(--glass-bg);
@@ -296,7 +298,7 @@
 ================================ */
 
 .keyConceptsSection {
-  padding: 6rem 0;
+  padding: 3rem 0;
   background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
               radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
               #030712;
@@ -304,27 +306,63 @@
 }
 
 .keyConceptsContainer {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .keyConceptsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Mobile responsiveness for key concepts */
+@media screen and (max-width: 768px) {
+  .keyConceptsGrid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .keyConceptsSection {
+    padding: 2rem 0; /* Reduced padding on mobile */
+  }
+
+  .conceptCard {
+    padding: 1.2rem; /* Smaller padding on mobile */
+    border-radius: 10px; /* Slightly smaller border radius */
+  }
+
+  .conceptTitle {
+    font-size: 1.1rem; /* Smaller title on mobile */
+    margin: 0 0 0.8rem 0;
+    padding-bottom: 0.4rem;
+  }
+
+  .conceptIcon {
+    font-size: 1.8rem; /* Smaller icon on mobile */
+    margin-bottom: 0.6rem;
+  }
+
+  .conceptList li {
+    font-size: 0.8rem; /* Smaller text on mobile */
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    padding-left: 0.8rem;
+  }
 }
 
 .keyConceptsGrid:first-child {
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 
 .conceptCard {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
   transition: all 0.3s ease;
   height: 100%;
   display: flex;
@@ -339,18 +377,18 @@
 }
 
 .conceptIcon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
   text-align: center;
 }
 
 .conceptTitle {
   color: var(--neon-cyan) !important;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
   text-align: center;
-  padding-bottom: 1rem;
+  padding-bottom: 0.6rem;
   border-bottom: 1px solid rgba(0, 229, 255, 0.2);
 }
 
@@ -363,11 +401,11 @@
 
 .conceptList li {
   color: #cbd5e1;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
   position: relative;
-  padding-left: 1.2rem;
+  padding-left: 1rem;
   transition: color 0.2s ease;
 }
 
@@ -442,6 +480,7 @@
     gap: 2rem;
   }
 }
+
 
 .curriculumTimeline {
   display: flex;
@@ -684,4 +723,208 @@
   text-align: center;
   opacity: 0.85;
   font-weight: 400;
+}
+
+/* ===============================
+   ABOUT PAGE STYLES
+================================ */
+
+.aboutSection {
+  padding: 4rem 0;
+  background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
+              #030712;
+  position: relative;
+}
+
+.aboutCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 3rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.aboutCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  z-index: 2;
+}
+
+.aboutCard:hover::before {
+  transform: scaleX(1);
+}
+
+.aboutCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--neon-cyan);
+  background: rgba(0, 229, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.1);
+  z-index: 3;
+}
+
+.aboutText {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.aboutList {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.aboutList li {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.aboutList li::before {
+  content: '➤';
+  color: var(--neon-cyan);
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.aboutList li:hover {
+  color: var(--neon-cyan);
+}
+
+.aboutList li:hover::before {
+  transform: translateX(3px);
+}
+
+.sectionSubTitle {
+  color: var(--neon-purple) !important;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1.2rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionSubTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+  border-radius: 1px;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.guidelinesBox {
+  background: rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.guidelinesBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-purple));
+}
+
+.guidelinesList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.guidelinesList li {
+  color: #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.guidelinesList li::before {
+  content: '✓';
+  color: var(--neon-cyan);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-weight: bold;
+}
+
+.guidelinesList li:hover {
+  color: var(--neon-cyan);
+  transform: translateX(5px);
+}
+
+.ctaButton {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ctaButton .button--secondary {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+  border: none;
+  color: #000 !important;
+  font-weight: 800;
+  padding: 1.2rem 3rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1.1rem;
+}
+
+.ctaButton .button--secondary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+  filter: brightness(1.2);
+}
+
+.bookCoverImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bookCoverImage:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(0, 229, 255, 0.4);
 }
